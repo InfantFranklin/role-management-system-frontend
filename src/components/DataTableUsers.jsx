@@ -3,65 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const DataTableUsers = () => {
-  // const users = [
-  //   {
-  //     _id: "6676b21ff7a6784d4afafab7",
-  //     name: "Admin",
-  //     email: "admin@gmail.com",
-  //     password: "$2b$10$opjE.lFU7H02sSqEYNZvX.4MvnF5pCtSrEfjVTVC2rxD1vjaZGxBu",
-  //     role: {
-  //       _id: "6676ac42b3942ec718dc0b3c",
-  //       name: "admin",
-  //       privileges: ["view all data", "edit all data", "delete all data"],
-  //       __v: 0,
-  //     },
-  //     organization: {
-  //       _id: "6676b21ff7a6784d4afafab5",
-  //       name: "Org",
-  //       users: [],
-  //       __v: 0,
-  //     },
-  //     __v: 0,
-  //   },
-  //   {
-  //     _id: "6676f2071e2c3933fbc67ebf",
-  //     name: "Admin1",
-  //     email: "admin1@gmail.com",
-  //     password: "$2b$10$zXvUIyKkz7VPaGRdvA9XqusSn2lSHSuGZVfPYXH1MePkAmrXdtOEa",
-  //     role: {
-  //       _id: "6676ac42b3942ec718dc0b3c",
-  //       name: "admin",
-  //       privileges: ["view all data", "edit all data", "delete all data"],
-  //       __v: 0,
-  //     },
-  //     organization: {
-  //       _id: "6676b21ff7a6784d4afafab5",
-  //       name: "Org",
-  //       users: [],
-  //       __v: 0,
-  //     },
-  //     __v: 0,
-  //   },
-  //   {
-  //     _id: "6677090c438d5d66ab835500",
-  //     name: "Admin2",
-  //     email: "admin12@gmail.com",
-  //     password: "$2b$10$uJLFU5lPiFcOPNbDlyppsulWO7npC4Ll6cHN7Wfm2Njc/UTaIch2y",
-  //     role: {
-  //       _id: "6676ac42b3942ec718dc0b3c",
-  //       name: "admin",
-  //       privileges: ["view all data", "edit all data", "delete all data"],
-  //       __v: 0,
-  //     },
-  //     organization: {
-  //       _id: "6676b21ff7a6784d4afafab5",
-  //       name: "Org",
-  //       users: [],
-  //       __v: 0,
-  //     },
-  //     __v: 0,
-  //   },
-  // ];
   const navigate = useNavigate();
   const [users, setUsers] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -71,12 +12,15 @@ const DataTableUsers = () => {
 
   useEffect(() => {
     getUserDetails();
-    checkUserrole();
+    checkUserRole();
   }, []);
 
-  const checkUserrole = () => {
+  const checkUserRole = () => {
     if (userRole === "admin") {
+      console.log (userRole,"Role check")
       setIsButtonDisabled(false);
+    }else {
+       console.log(userRole, 'user');
     }
   };
 
@@ -114,13 +58,13 @@ const DataTableUsers = () => {
         {!isButtonDisabled && (
           <button
             onClick={() => addUser()}
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
             Add User
           </button>
         )}
         {users.length > 0 ? (
-          <table className="min-w-full bg-white border border-gray-300">
+          <table className="min-w-full mt-8 bg-white border border-gray-300">
             <thead>
               <tr>
                 <th className="px-4 py-2 border-b text-center">ID</th>

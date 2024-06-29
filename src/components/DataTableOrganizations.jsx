@@ -44,7 +44,7 @@ const DataTableOrganizations = () => {
   };
 
   const addOrganization = () => {
-    navigate("/organization");
+    navigate("/addorganization");
   };
 
   return (
